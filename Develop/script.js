@@ -10,14 +10,23 @@ var hourTwo = document.querySelector("#hour-2");
 var hourThree = document.querySelector("#hour-3");
 var hourFour = document.querySelector("#hour-4");
 var hourFive = document.querySelector("#hour-5");
+//Lines 15-21 Are responsible for showing the current date within the header. 3rd Child within HTML header
 
-//USE LINE 14 WITH LOOP
+var currentDate = new Date();
+var editDateInfo = currentDate.toLocaleDateString('en-US', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+});
+  document.querySelector("#currentDate").textContent = editDateInfo
+
+//selects hours from currentDate
+currentTimeHour = currentDate.getHours()
 
 jqueryCall = $('#hour-10')
 
 //Loop to check what the current time is and update visual classes.
 //Need to use military time to more easily compare the values.
-currentTimeHour = 12
 workDayIds = [hourNine, hourTen, hourEleven, hourTwelve, hourOne, hourTwo, hourThree, hourFour, hourFive]
 var workHour = [9, 10, 11, 12, 13, 14, 15, 16, 17]
    for (var i = 0; i < workHour.length+1; i++) {
@@ -35,14 +44,7 @@ var workHour = [9, 10, 11, 12, 13, 14, 15, 16, 17]
          workDayIds[i].classList.remove('future')
      }
 }
-//Lines 9-15 Are responsible for showing the current date within the header. 3rd Child within HTML header
-var currentDate = new Date();
-var editDateInfo = currentDate.toLocaleDateString('en-US', {
-  month: 'short',
-  day: 'numeric',
-  year: 'numeric'
-});
-  document.querySelector("#currentDate").textContent = editDateInfo
+
 
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
