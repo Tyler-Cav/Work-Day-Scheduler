@@ -1,17 +1,18 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-var hourNine = document.querySelector("#hour-9");
-var hourTen = document.querySelector("#hour-10");
-var hourEleven = document.querySelector("#hour-11");
-var hourTwelve = document.querySelector("#hour-12");
-var hourOne = document.querySelector("#hour-1");
-var hourTwo = document.querySelector("#hour-2");
-var hourThree = document.querySelector("#hour-3");
-var hourFour = document.querySelector("#hour-4");
-var hourFive = document.querySelector("#hour-5");
+var hourNine = $("#hour-9");
+var hourTen = $("#hour-10");
+var hourEleven = $("#hour-11");
+var hourTwelve = $("#hour-12");
+var hourOne = $("#hour-1");
+var hourTwo = $("#hour-2");
+var hourThree = $("#hour-3");
+var hourFour = $("#hour-4");
+var hourFive = $("#hour-5");
 //Lines 15-21 Are responsible for showing the current date within the header. 3rd Child within HTML header
 
+//review date using jQuery instead
 var currentDate = new Date();
 var editDateInfo = currentDate.toLocaleDateString('en-US', {
   month: 'short',
@@ -23,25 +24,23 @@ var editDateInfo = currentDate.toLocaleDateString('en-US', {
 //selects hours from currentDate
 currentTimeHour = currentDate.getHours()
 
-jqueryCall = $('#hour-10')
-
 //Loop to check what the current time is and update visual classes.
 //Need to use military time to more easily compare the values.
 workDayIds = [hourNine, hourTen, hourEleven, hourTwelve, hourOne, hourTwo, hourThree, hourFour, hourFive]
 var workHour = [9, 10, 11, 12, 13, 14, 15, 16, 17]
    for (var i = 0; i < workHour.length+1; i++) {
      if (workHour[i] < currentTimeHour) {
-        workDayIds[i].classList.add('past')
-        workDayIds[i].classList.remove('present')
-        workDayIds[i].classList.remove('future')
+        workDayIds[i].addClass('past') //updating to jquery is .addClass('')
+        workDayIds[i].removeClass('present')//updating to jquery remove is .removeClass('')
+        workDayIds[i].removeClass('future')
      } else if (workHour[i]  > currentTimeHour) {
-        workDayIds[i].classList.remove('past')
-        workDayIds[i].classList.remove('present')
-        workDayIds[i].classList.add('future')
+        workDayIds[i].removeClass('past')
+        workDayIds[i].removeClass('present')
+        workDayIds[i].addClass('future')
      } else if (workHour[i] == currentTimeHour) {
-        workDayIds[i].classList.add('present')
-        workDayIds[i].classList.remove('past')
-        workDayIds[i].classList.remove('future')
+        workDayIds[i].addClass('present')
+        workDayIds[i].removeClass('past')
+        workDayIds[i].removeClass('future')
      }
 }
 
