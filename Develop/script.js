@@ -31,17 +31,17 @@ workDayIds = [hourNine, hourTen, hourEleven, hourTwelve, hourOne, hourTwo, hourT
 var workHour = [9, 10, 11, 12, 13, 14, 15, 16, 17]
    for (var i = 0; i < workHour.length+1; i++) {
      if (workHour[i] < currentTimeHour) {
-           workDayIds[i].classList.add('past')
-           workDayIds[i].classList.remove('present')
-           workDayIds[i].classList.remove('future')
+        workDayIds[i].classList.add('past')
+        workDayIds[i].classList.remove('present')
+        workDayIds[i].classList.remove('future')
      } else if (workHour[i]  > currentTimeHour) {
-      workDayIds[i].classList.remove('past')
-      workDayIds[i].classList.remove('present')
-      workDayIds[i].classList.add('future')
+        workDayIds[i].classList.remove('past')
+        workDayIds[i].classList.remove('present')
+        workDayIds[i].classList.add('future')
      } else if (workHour[i] == currentTimeHour) {
-         workDayIds[i].classList.add('present')
-         workDayIds[i].classList.remove('past')
-         workDayIds[i].classList.remove('future')
+        workDayIds[i].classList.add('present')
+        workDayIds[i].classList.remove('past')
+        workDayIds[i].classList.remove('future')
      }
 }
 
