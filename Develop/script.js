@@ -44,7 +44,14 @@ var workHour = [9, 10, 11, 12, 13, 14, 15, 16, 17]
      }
 }
 
-
+  /* Pseudo code
+    TODO: Create save button functionality to remember in local storage what the user inserted.
+      *Create a foreach loop over the workDayID's array which will track an event listener for a button click
+        ? something like workDayIDs for each(hour).addeventlistener("click", function {})
+      *Upon button click with function {} need for it to look at the correlating hour to see if it has text
+        ? something like if #hourNineID === 'clicked' && hourNine has text 
+        ? Then if they match, create a local storage to save that text information within that hour
+  */
 
   // TODO: Add a listener for click events on the save button. This code should
   // *use the id in the containing time-block as a key to save the user input in
@@ -58,3 +65,7 @@ var workHour = [9, 10, 11, 12, 13, 14, 15, 16, 17]
   // attribute of each time-block be used to do this?
   //
 
+  /*
+  comments
+  comments
+  */
