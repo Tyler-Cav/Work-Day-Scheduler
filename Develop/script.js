@@ -1,6 +1,4 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
+//Grabbing button HTML elements
 var hourNineBtn = $('#btn-9')
 var hourTenBtn  = $('#btn-10')
 var hourElevenBtn = $('#btn-11') 
@@ -10,8 +8,10 @@ var hourTwoBtn = $('#btn-2')
 var hourThreeBtn = $('#btn-3')
 var hourFourBtn = $('#btn-4')
 var hourFiveBtn = $('#btn-5')
+//Creating an array to loop over the buttons
 var hourBtnArray = [hourNineBtn, hourTenBtn, hourElevenBtn, hourTwelveBtn, hourOneBtn, hourTwoBtn, hourThreeBtn, hourFourBtn, hourFiveBtn]
 
+//Grabbing ID elements of each hour section. Using this to loop over and change the color based on current time
 var hourNine = $("#hour-9");
 var hourTen = $("#hour-10");
 var hourEleven = $("#hour-11");
@@ -23,6 +23,7 @@ var hourFour = $("#hour-4");
 var hourFive = $("#hour-5");
 var workDayIds = [hourNine, hourTen, hourEleven, hourTwelve, hourOne, hourTwo, hourThree, hourFour, hourFive]
 
+//Function which calls the localstorage based on the save button
 $(document).ready(function() {
   workDayIds.forEach(function(hour) {
   hour.children("textarea").text(localStorage.getItem(hour.attr("id")))
@@ -61,37 +62,10 @@ var workHour = [9, 10, 11, 12, 13, 14, 15, 16, 17]
      }
 }
 
+//Looping over each button element to listen for a click. If clicked, store textinput value.
 hourBtnArray.forEach(function(hourBtn) {
   hourBtn.on("click", function() {
     let textInput = hourBtn.siblings("textarea").val()
     localStorage.setItem(hourBtn.parent().attr("id"), textInput)
   })
 })
-
-
-
-
-
-  /* Pseudo code
-    TODO: Create save button functionality to remember in local storage what the user inserted.
-      *Upon button click with function {} need for it to look at the correlating hour to see if it has text
-        ? something like if #hourNineID === 'clicked' && hourNine has text 
-        ? Then if they match, create a local storage to save that text information within that hour
-  */
-
-  // TODO: Add a listener for click events on the save button. This code should
-  // *use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
-
-  /*
-  comments
-  comments
-  */
