@@ -1,6 +1,17 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
+var hourNineBtn = $('#btn-9')
+var hourTenBtn  = $('#btn-10')
+var hourElevenBtn = $('#btn-11') 
+var hourTwelveBtn = $('#btn-12')
+var hourOneBtn = $('#btn-1')
+var hourTwoBtn = $('#btn-2')
+var hourThreeBtn = $('#btn-3')
+var hourFourBtn = $('#btn-4')
+var hourFiveBtn = $('#btn-5')
+var hourBtnArray = [hourNineBtn, hourTenBtn, hourElevenBtn, hourTwelveBtn, hourOneBtn, hourTwoBtn, hourThreeBtn, hourFourBtn, hourFiveBtn]
+
 var hourNine = $("#hour-9");
 var hourTen = $("#hour-10");
 var hourEleven = $("#hour-11");
@@ -10,6 +21,13 @@ var hourTwo = $("#hour-2");
 var hourThree = $("#hour-3");
 var hourFour = $("#hour-4");
 var hourFive = $("#hour-5");
+var workDayIds = [hourNine, hourTen, hourEleven, hourTwelve, hourOne, hourTwo, hourThree, hourFour, hourFive]
+
+$(document).ready(function() {
+  workDayIds.forEach(function(hour) {
+  hour.children("textarea").text(localStorage.getItem(hour.attr("id")))
+  })
+})
 
 //Lines 15-21 Are responsible for showing the current date within the header. 3rd Child within HTML header
 //review date using jQuery instead
@@ -26,7 +44,6 @@ currentTimeHour = currentDate.getHours()
 
 //Loop to check what the current time is and update visual classes.
 //Need to use military time to more easily compare the values.
-workDayIds = [hourNine, hourTen, hourEleven, hourTwelve, hourOne, hourTwo, hourThree, hourFour, hourFive]
 var workHour = [9, 10, 11, 12, 13, 14, 15, 16, 17]
    for (var i = 0; i < workHour.length+1; i++) {
      if (workHour[i] < currentTimeHour) {
@@ -44,10 +61,19 @@ var workHour = [9, 10, 11, 12, 13, 14, 15, 16, 17]
      }
 }
 
+hourBtnArray.forEach(function(hourBtn) {
+  hourBtn.on("click", function() {
+    let textInput = hourBtn.siblings("textarea").val()
+    localStorage.setItem(hourBtn.parent().attr("id"), textInput)
+  })
+})
+
+
+
+
+
   /* Pseudo code
     TODO: Create save button functionality to remember in local storage what the user inserted.
-      *Create a foreach loop over the workDayID's array which will track an event listener for a button click
-        ? something like workDayIDs for each(hour).addeventlistener("click", function {})
       *Upon button click with function {} need for it to look at the correlating hour to see if it has text
         ? something like if #hourNineID === 'clicked' && hourNine has text 
         ? Then if they match, create a local storage to save that text information within that hour
